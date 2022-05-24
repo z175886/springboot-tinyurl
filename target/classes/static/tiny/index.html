@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Tiny Url</h1>
+
+<tr th:each="website: ${WebsiteList}">
+    <p>"Long Url"</p>
+    <td th:text="${website.getLongUrl()}"></td>
+    <p>"Short Url"</p>
+    <td th:text="${website.getShortUrl()}"></td>
+
+</tr>
+
+<div align="center">
+    <h1>Short URL Generator</h1>
+    <form action = "#" th:action = "@{/generated}" th:object = "${website}" method="post">
+        <label>Webisite Url</label>
+        <input type = "text" th:field="*{longUrl}" /><br/>
+        <button type = "submit">Generate</button>
+    </form>
+
+
+</div>
+
+</body>
+</html>

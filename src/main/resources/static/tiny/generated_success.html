@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Congrats!</title>
+</head>
+<body>
+<div align="center">
+    <h1>Congrats!Tiny Url Generated!!</h1>
+    <span>Original Url: </span><span th:text = "${website.getLongUrl()}"></span></br>
+
+
+    <span>Tiny Url: </span><span th:text = "${website.getShortUrl()}"></span>
+
+</div>
+</body>
+</html>
