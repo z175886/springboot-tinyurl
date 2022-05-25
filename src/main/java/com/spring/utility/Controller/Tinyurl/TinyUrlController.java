@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class TinyUrlController {
@@ -18,14 +17,10 @@ public class TinyUrlController {
         return websiterepo.findAll();
     }
 
-    @GetMapping(value = "/get{shortUrl}")
-    public String getWebsite(@PathVariable String shortUrl, @RequestBody Website website){
-       Website getWebsite = websiterepo.findById(shortUrl).get();
-       String result = getWebsite.getLongUrl();
-
-       return result;
+    @GetMapping(value = "/get/{shortUrl}")
+    public Website getWebsite(@PathVariable String shortUrl){
+       return websiterepo.findById(shortUrl).get();
     }
-
 
     @PostMapping(value = "/save")
     public String saveWebsite(@RequestBody Website website){
