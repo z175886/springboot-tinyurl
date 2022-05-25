@@ -3,6 +3,7 @@ package com.spring.utility.Dao;
 import org.springframework.stereotype.Repository;
 
 import java.util.Random;
+import java.util.UUID;
 
 @Repository
 public class WebsiteDaoImpl implements WebsiteDao {
@@ -13,17 +14,11 @@ public class WebsiteDaoImpl implements WebsiteDao {
 
     @Override
     public String generateShortUrl() {
-        String CHARSPOOL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        StringBuilder str = new StringBuilder();
-        Random rnd = new Random();
-        while (str.length() < 6) { // length of the random string.
-            int index = (int) (rnd.nextFloat() * CHARSPOOL.length());
-            str.append(CHARSPOOL.charAt(index));
-        }
-        String resultStr = str.toString();
-        String prefix = "https://tinyurl.com/";
-        resultStr=prefix+resultStr;
-        return resultStr;
+        String uuid = UUID.randomUUID().toString();
+        uuid=uuid.substring(0,7);
+        String prefix = "https://mytinyurl.com/";
+        uuid=prefix+uuid;
+        return uuid;
     }
 
     @Override
